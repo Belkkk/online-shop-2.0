@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование товара &laque;[[${product.title}]] &ndash; Сельмаг</title>
+</head>
+<body>
+<a data-th-href="@{/catalogue/products/{productsId}(productsId = ${product.id})}">&larr; К товарe</a>
+<h1>Редактирование товара</h1>
+
+<div data-th-if="${errors}">
+    <h2>Допущены ошибки</h2>
+    <ul>
+        <li data-th-each="error: ${errors}" data-th-text="${error}"></li>
+    </ul>
+</div>
+
+<form method="post" data-th-action="@{/catalogue/products/{productsId}/edit(productsId = ${product.id})}">
+    <label>
+        Название <br>
+        <input type="text" name = "title" data-th-value="${payload != null ? payload.title : product.title}">
+        </label><br>
+    <label>
+        Описание <br>
+        <textarea name = "details" data-th-text="${payload != null ? payload.details : product.details}"></textarea>
+    </label><br>
+    <button type="submit">изменить</button>
+</form>
+</body>
+</html>

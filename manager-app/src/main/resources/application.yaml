@@ -1,0 +1,7 @@
+server:
+  port: 8082
+
+selmag:
+  service:
+    catalog:
+      uri: http://localhost:8081  # ← указываем правильный порт catalogue-service
